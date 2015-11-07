@@ -174,8 +174,8 @@ The loudspeaker model described above has been implemented using the LUA scripti
 \item How to use:
 \begin{itemize}
 \item Copy all files contained in \cite{files}  in a local folder (e.g., 'C:$\backslash$loudspeaker$\backslash$')
-\item Enter the correct path in lines 33-35 of file \textit{loudspeaker.lua}.
-\item Enter the correct path in 5-8 of \textit{CallFEMM\_LS.m}.
+\item Enter the correct path in lines 33-35 of file \textit{loudspeaker.lua}. Attention to the old-windows style of treating long names or names with spaces.
+\item Enter the correct path in 5-8 of \textit{CallFEMM\_LS.m}. Attention to the old-windows style of treating long names or names with spaces.
 \end{itemize}
 \end{enumerate}
 
@@ -188,36 +188,60 @@ You can verufy if the model is working by:
 \item Select \textit{File - Open LUA Script - loudspeaker.lua}
 \item If \textit{loudspeaker.lua} is correct, FEMM will execute a test simulation (defined by input file \textit{loudspeaker.in} in \cite{files}) and close automatically.\\
 \end{itemize}
-\item Matlab routines:
+\item \textit{CallFEMM\_LS.m}:
 \begin{itemize}
 \item Open Matlab and select the folder containing the loudspeaker files;
 \item On the console, type:\\
 $>>$ X = [5.0,3.0,1.0,0.0,7.0,6.0,2.0,5.0,0.5,...\\
 0.0,1.0,0.5,1.0,7.0,4.0,1.0]';\\
 $>>$ Y = CallFEMM\_LS(X)
-\item If \textit{CallFEMM\_LS.m} is correct, Matlab will open a FEMM window, which will run the simuation and close automatically.\\
-\end{itemize}
+\item If your path is correct, the FEMM 4.2 window should pop up in your screen, run the dummy simulation, and return the result:\\
+Y =\\
+    0.5272\\
+    0.0000\\
+    0.0000
+    
+The following call:\\
+$>>$ F = LS\_fun(X)
+
+\noindent should then yield the penalized objective function value:\\
+F =\\
+  159.5294
+  \end{itemize}
 \end{enumerate}
+
 
 Besides function \textit{LS\_fun.m}, the routines \textit{LS\_vol.m} and \textit{LS\_B.m} can be useful, since they return the volume and magnetic flux density values separately. The Matlab routines and the LUA script are all extensively commented, and can be easily adapted for a wide range of optimization routines.
 
 \section{Maiores informações}
-Questions, comments and suggestions can be filed to \url, or sent directly to \url{fcampelo@ufmg.br}.\\
-
-\ \\
-
-\ \\
-
-\ifCLASSOPTIONcaptionsoff
-  \newpage
-\fi
+Questions, bug reports, comments and suggestions can be filed to \cite{files}, or sent directly to \url{fcampelo@ufmg.br}.
 
 
 \begin{thebibliography}{1}
+\bibitem{infol}
+{Infolytica Corporation},
+``Optimization - Minimizing Loudspeaker Mass'',
+\emph{online}, available from: \url{http://www.infolytica.com/en/applications/ex0086/}
+
 \bibitem{femm42}
 David Meeker,
 ``Finite Element Method Magnetics, v. 4.2'',
 \emph{online}, available from: \url{http://www.femm.info/wiki/HomePage}
+
+\bibitem{lua}
+R. Ierusalimschy, L. H. de Figueiredo, W. Celes,
+``LUA scripting language'',
+\emph{online}, available from: \url{http://www.lua.org/}
+
+\bibitem{femm42mag}
+David Meeker,
+``Finite Element Method Magnetics v. 4.2 - Magnetics tutorial'',
+\emph{online}, available from: \url{http://www.femm.info/Archives/doc/tutorial-magnetic.pdf}
+
+\bibitem{files}
+Felipe Campelo,
+``Loudspeaker design model'',
+\emph{online}, available from: \url{https://github.com/fcampelo/Loudspeaker-model}
 
 \end{thebibliography}
 
